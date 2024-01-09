@@ -1,10 +1,23 @@
 ## Setup
 
-**Note:** For this exercise, we have provided an `.env` file with the database connection string. Normally, you would not commit this file to version control. We are doing it here for simplicity and given that we are using a local SQLite database.
+## Plan:
 
-## Database
+1. Provide a function to get a list of movies with their id, title and year by providing a list of their IDs (e.g., /movies?id=133093,816692 should return 2 movies with these IDs, if they exist)
 
-This project should be used with the `movies.db` database in `data/` folder. It is the same database that we used in the previous exercise. You can download a fresh database [here](https://cdn.cs50.net/2022/fall/psets/7/movies.zip) or from [CS50](https://cs50.harvard.edu/x/2023/psets/7/movies/).
+2. Create a migration file to be able to create a table screenings with following parameters: id(autoIncrement, primary key, not null), movie_id(nut null, with reference to movie.id), date(date), total_tickets(integer), tickets_left(integer)
+
+3. generate types for the database
+
+4. create a validation schema using zod 
+
+5. create tests to allow admin to add and edit screenings, implement this function
+
+6. let the user get a list of screenings available for booking. Screenings should include session information (timestamp, number of tickets, number of tickets left) and movies: (title and year).
+
+7. let the user to create a booking (ticket) for movie screening that has some tickets left.
+
+8. let the users get a list of bookings (tickets) they have booked
+
 
 ## Migrations
 
