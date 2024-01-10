@@ -1,5 +1,3 @@
-## Setup
-
 ## Plan:
 
 1. Provide a function to get a list of movies with their id, title and year by providing a list of their IDs (e.g., /movies?id=133093,816692 should return 2 movies with these IDs, if they exist)
@@ -8,7 +6,7 @@
 
 3. generate types for the database
 
-4. create a validation schema using zod 
+4. create a validation schema using zod
 
 5. create tests to allow admin to add and edit screenings, implement this function
 
@@ -18,6 +16,7 @@
 
 8. let the users get a list of bookings (tickets) they have booked
 
+## Setup
 
 ## Migrations
 

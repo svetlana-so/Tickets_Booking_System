@@ -2,6 +2,7 @@ import { Router } from 'express'
 import type { Database } from '@/database'
 import { jsonRoute } from '@/utils/middleware'
 import buildRespository from './repository'
+import movies from '@/modules/movies/controller'
 
 export default (db: Database) => {
   const messages = buildRespository(db)
@@ -9,10 +10,13 @@ export default (db: Database) => {
 
   router.get(
     '/',
-    jsonRoute(async () => {
-      // a hard-coded solution for your first controller test
-      const ids = [133093, 816692] // TODO: get ids from query params
-      const movies = await messages.findByIds(ids)
+    jsonRoute(async (req) => {
+      if (typeof req.query.id !== 'string') {
+        return messages.findAll()
+      }
+
+      const ids = req.query.id.split(',').map((n) => parseInt(n, 10))
+      const movies = messages.findByIds(ids)
 
       return movies
     })
