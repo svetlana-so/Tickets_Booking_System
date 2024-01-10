@@ -2,7 +2,6 @@ import { Router } from 'express'
 import type { Database } from '@/database'
 import { jsonRoute } from '@/utils/middleware'
 import buildRespository from './repository'
-import movies from '@/modules/movies/controller'
 
 export default (db: Database) => {
   const messages = buildRespository(db)
