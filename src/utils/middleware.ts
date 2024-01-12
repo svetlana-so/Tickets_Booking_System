@@ -19,10 +19,7 @@ type JsonHandler<T> = (
  * @param handler Request handler that returns a serializable object.
  * @returns Request handler that sends the result as JSON.
  */
-export function jsonRoute<T>(
-  handler: JsonHandler<T>,
-  statusCode = StatusCodes.OK
-): RequestHandler {
+export function jsonRoute<T>( handler: JsonHandler<T>, statusCode = StatusCodes.OK): RequestHandler {
   return async (req, res, next) => {
     try {
       const result = await handler(req, res, next)

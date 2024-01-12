@@ -36,9 +36,7 @@ export default (db: Database) => {
       return record
     })
   )
-  router.patch(
-    '/:id(\\d+)',
-    jsonRoute(async (req) => {
+  router.patch( '/:id(\\d+)', jsonRoute(async (req) => {
       const id = schema.parseID(req.params.id)
       const bodyPatch = schema.parsePartial(req.body)
       const record = await screenings.updateScreening(id, bodyPatch)

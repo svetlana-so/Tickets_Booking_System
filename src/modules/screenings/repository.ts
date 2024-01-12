@@ -14,11 +14,12 @@ export default (db: Database) => ({
       .selectFrom(TABLE)
       .innerJoin('movies', 'screenings.movieId', 'movies.id')
       .select([
+        'screenings.id',
         'movies.title',
         'movies.year',
-        'date',
-        'ticketsTotal',
-        'ticketsLeft',
+        'screenings.date',
+        'screenings.ticketsTotal',
+        'screenings.ticketsLeft',
       ])
       .execute(),
 
@@ -34,5 +35,16 @@ export default (db: Database) => ({
       .executeTakeFirst(),
 
   findById: async (id: number) =>
-    db.selectFrom(TABLE).select(keys).where('id', '=', id).execute(),
+    db
+      .selectFrom(TABLE)
+      .innerJoin('movies', 'screenings.movieId', 'movies.id')
+      .select([
+        'movies.title',
+        'movies.year',
+        'screenings.date',
+        'screenings.ticketsTotal',
+        'screenings.ticketsLeft',
+      ])
+      .where('screenings.id', '=', id)
+      .execute(),
 })

@@ -42,6 +42,7 @@ describe('screenings manipulations', () => {
 
     expect(screenings).toEqual([
       {
+        id: 1,
         title: 'Love actually',
         year: 2003,
         date: '2020-01-01T00:00:00Z',
@@ -62,11 +63,12 @@ describe('screenings manipulations', () => {
     const screenings = await repository.findAll()
     expect(screenings).toEqual([
       {
+        id: 1,
+        title: 'Sherlock Holmes',
+        year: 2009,
         date: '2020-01-01T18:30:00Z',
         ticketsLeft: 3,
         ticketsTotal: 15,
-        title: 'Sherlock Holmes',
-        year: 2009,
       },
     ])
 
@@ -74,8 +76,8 @@ describe('screenings manipulations', () => {
       const screening = await repository.findById(1)
       expect(screening).toEqual([
         {
-          id: 1,
-          movie_id: 10000,
+          title: 'Sherlock Holmes',
+          year: 2009,
           date: '2020-01-01T18:30:00Z',
           ticketsTotal: 15,
           ticketsLeft: 3,
