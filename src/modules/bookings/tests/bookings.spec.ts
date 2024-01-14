@@ -21,3 +21,14 @@ it('GET', async () => {
   const { body } = await supertest(app).get('/bookings').expect(200)
   expect(body).toHaveLength(1)
 })
+
+it('return user bookings', async () => {
+  const { body } = await supertest(app).get('/bookings/1')
+  expect(body).toEqual([
+    {
+      date: '2020-01-01T00:00:00Z',
+      title: 'Love actually',
+      year: 2003,
+    },
+  ])
+})

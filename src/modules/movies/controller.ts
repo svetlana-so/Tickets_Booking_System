@@ -3,6 +3,7 @@ import type { Database } from '@/database'
 import { jsonRoute } from '@/utils/middleware'
 import buildRepository from './repository'
 
+
 export default (db: Database) => {
   const messages = buildRepository(db)
   const router = Router()

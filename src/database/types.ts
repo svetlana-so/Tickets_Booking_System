@@ -36,8 +36,8 @@ export interface Screenings {
   id: Generated<number>;
   movieId: number;
   date: string;
-  ticketsTotal: number | null;
-  ticketsLeft: number | null;
+  ticketsTotal: number;
+  ticketsLeft: number;
 }
 
 export interface Stars {

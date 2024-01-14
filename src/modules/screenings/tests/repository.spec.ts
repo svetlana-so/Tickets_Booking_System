@@ -37,6 +37,7 @@ describe('screenings manipulations', () => {
     // ASSERT
     expect(screenings).toHaveLength(1)
   })
+
   it('it will return the array of movies with title, year, date, tickets information', async () => {
     const screenings = await repository.findAll()
 
