@@ -11,7 +11,7 @@ export async function up(db: Kysely<SqliteDatabase>) {
   await db.schema
     .createTable('bookings')
     .ifNotExists()
-    .addColumn('user_id', 'integer', (c) => c.notNull().references('user.id'))
+    .addColumn('user_id', 'integer', (c) => c.notNull().references('users.id'))
     .addColumn('screening_id', 'integer', (c) =>
       c.notNull().references('screenings.id')
     )

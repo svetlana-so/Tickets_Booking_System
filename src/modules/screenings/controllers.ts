@@ -2,11 +2,11 @@ import { Router } from 'express'
 import { StatusCodes } from 'http-status-codes'
 import type { Database } from '@/database'
 import { jsonRoute } from '@/utils/middleware'
-import buildRespository from './repository'
+import buildRepository from './repository'
 import * as schema from './schema'
 
 export default (db: Database) => {
-  const screenings = buildRespository(db)
+  const screenings = buildRepository(db)
   const router = Router()
 
   router.get(
@@ -25,6 +25,7 @@ export default (db: Database) => {
       return screenings.createScreening(body)
     }, StatusCodes.CREATED)
   )
+
   router.get(
     '/:id(\\d+)',
     jsonRoute(async (req) => {
@@ -36,7 +37,11 @@ export default (db: Database) => {
       return record
     })
   )
-  router.patch( '/:id(\\d+)', jsonRoute(async (req) => {
+  // get all bookings of one user
+  
+  router.patch(
+    '/:id(\\d+)',
+    jsonRoute(async (req) => {
       const id = schema.parseID(req.params.id)
       const bodyPatch = schema.parsePartial(req.body)
       const record = await screenings.updateScreening(id, bodyPatch)

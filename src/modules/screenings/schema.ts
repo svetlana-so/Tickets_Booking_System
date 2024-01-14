@@ -9,8 +9,8 @@ const schema = z.object({
   date: z
     .string()
     .datetime({ message: 'Invalid datetime string! Must be UTC.' }),
-  ticketsTotal: z.number().int().positive(),
-  ticketsLeft: z.number().int().positive(),
+  ticketsTotal: z.number().int(),
+  ticketsLeft: z.number().int(),
 })
 
 const insertable = schema.omit({ id: true })

@@ -12,11 +12,13 @@
 
 6. let the user get a list of screenings available for booking. Screenings should include session information (timestamp, number of tickets, number of tickets left) and movies: (title and year).✅
 
+7. create users and bookings tables ✅
 
+8. implement function to create users, provide zod validation schema, write tests ✅
 
-7. let the user to create a booking (ticket) for movie screening that has some tickets left.
+9. let the user to create a booking (book a ticket) for movie screening that has some tickets left.
 
-8. let the users get a list of bookings (tickets) they have booked
+10. let the users get a list of bookings (tickets) they have booked
 
 ## Setup
 

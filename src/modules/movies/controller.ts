@@ -1,10 +1,10 @@
 import { Router } from 'express'
 import type { Database } from '@/database'
 import { jsonRoute } from '@/utils/middleware'
-import buildRespository from './repository'
+import buildRepository from './repository'
 
 export default (db: Database) => {
-  const messages = buildRespository(db)
+  const messages = buildRepository(db)
   const router = Router()
 
   router.get(

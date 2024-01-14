@@ -32,7 +32,7 @@ describe('GET', () => {
     ])
   })
   it('it should create a new user', async () => {
-    const response = await supertest(app)
+    await supertest(app)
       .post('/users')
       .send({
         email: 'ms@gmail.com',

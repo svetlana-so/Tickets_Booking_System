@@ -17,6 +17,15 @@ export default (db: Database) => {
     })
   )
 
+  router.get(
+    '/:id(\\d+)',
+    jsonRoute(async (req) => {
+      const id = schema.parseID(req.params.id)
+      const user = await users.findById(id)
+      return user
+    })
+  )
+
   router.post(
     '/',
     jsonRoute(async (req) => {
