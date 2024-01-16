@@ -1,6 +1,7 @@
 import createTestDatabase from '@tests/utils/createTestDatabase'
 import { createFor } from '@tests/utils/records'
 import buildRepository from '../repository'
+import * as fixtures from './fixtures'
 
 const db = await createTestDatabase()
 const repository = buildRepository(db)
@@ -8,18 +9,7 @@ const createMovies = createFor(db, 'movies')
 const createScreenings = createFor(db, 'screenings')
 
 // ARANGE FAKE DATA
-await createMovies([
-  {
-    id: 10000,
-    title: 'Sherlock Holmes',
-    year: 2009,
-  },
-  {
-    id: 10001,
-    title: 'Love actually',
-    year: 2003,
-  },
-])
+await createMovies(fixtures.movies)
 
 describe('screenings manipulations', () => {
   it('Should let the admin to screate a screening with existing movies in db by entering movie id and details', async () => {
@@ -31,10 +21,7 @@ describe('screenings manipulations', () => {
         ticketsLeft: 3,
       },
     ])
-    // ACT
     const screenings = await repository.findAll()
-
-    // ASSERT
     expect(screenings).toHaveLength(1)
   })
 

@@ -22,7 +22,7 @@ it('GET', async () => {
   expect(body).toHaveLength(1)
 })
 
-it('return user bookings', async () => {
+it('GET by id', async () => {
   const { body } = await supertest(app).get('/bookings/1')
   expect(body).toEqual([
     {
@@ -31,4 +31,10 @@ it('return user bookings', async () => {
       year: 2003,
     },
   ])
+})
+it('POST new booking', async () => {
+  await supertest(app).post('/bookings/1/1').expect(201)
+
+  const { body } = await supertest(app).get('/bookings').expect(200)
+  expect(body).toHaveLength(2)
 })

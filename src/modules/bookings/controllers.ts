@@ -27,7 +27,7 @@ export default (db: Database) => {
       const screening = await screenings.findById(screeningId)
 
       if (screening[0].ticketsLeft <= 0) {
-        res.send('Booking is not available')
+        res.send('Booking is not available, no tickets left')
         return
       }
       await bookings.createBooking({ userId, screeningId })

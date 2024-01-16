@@ -3,7 +3,6 @@ import { StatusCodes } from 'http-status-codes'
 import type { Database } from '@/database'
 import { jsonRoute } from '@/utils/middleware'
 import buildRepository from './repository'
-import { ArticleNotFound } from './error'
 import * as schema from './schema'
 
 export default (db: Database) => {
@@ -33,7 +32,7 @@ export default (db: Database) => {
       const id = schema.parseID(req.params.id)
       const record = await screenings.findById(id)
       if (!record) {
-        throw new ArticleNotFound()
+        throw new Error()
       }
       return record
     })
@@ -47,7 +46,7 @@ export default (db: Database) => {
       const bodyPatch = schema.parsePartial(req.body)
       const record = await screenings.updateScreening(id, bodyPatch)
       if (!record) {
-        throw new ArticleNotFound()
+        throw new Error()
       }
       return record
     })
